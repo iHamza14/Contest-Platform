@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(145deg, #f0f4fa 0%, #e6ecf5 100%);
+    min-height: 100vh;
+    color: #1e293b;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 20, 30, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  
+  .btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(59,130,246,0.3);
+  }
+  
+  .btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(59,130,246,0.4);
+  }
+  
+  .btn-secondary {
+    background: rgba(255,255,255,0.8);
+    color: #1e293b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  /* Form inputs */
+  input, textarea, select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2rem;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.8);
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  }
+  
+  textarea {
+    border-radius: 1rem;
+    min-height: 100px;
+  }
+  
+  /* Grid for contests */
+  .contest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .contest-card {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+  }
+  
+  .contest-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Submissions table */
+  .submissions-table {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  
+  .submissions-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .submissions-table th,
+  .submissions-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .submissions-table th {
+    font-weight: 600;
+    color: #4b5563;
+  }
+  
+  .verdict-accepted { color: #10b981; font-weight: 600; }
+  .verdict-wrong-answer { color: #ef4444; }
+  .verdict-runtime-error { color: #f59e0b; }
+  .verdict-time-limit-exceeded { color: #6b7280; }
+  
+  /* Leaderboard */
+  .leaderboard {
+    padding: 1rem;
+  }
+  
+  .leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .leaderboard th,
+  .leaderboard td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  /* Navbar styles (already separate but can be included here) */
+  .navbar {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  
+  .nav-links a, .nav-links button {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .nav-links a:hover {
+    color: #3b82f6;
+  }
+  
+  .btn-logout {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #ef4444;
+  }

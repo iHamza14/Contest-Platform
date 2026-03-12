@@ -1,0 +1,27 @@
+.submissions-table {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  
+  .submissions-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .submissions-table th,
+  .submissions-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .submissions-table th {
+    font-weight: 600;
+    color: #4b5563;
+  }
+  
+  .verdict-accepted { color: #10b981; font-weight: 600; }
+  .verdict-wrong-answer { color: #ef4444; }
+  .verdict-runtime-error { color: #f59e0b; }
+  .verdict-time-limit-exceeded { color: #6b7280; }

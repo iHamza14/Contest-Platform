@@ -1,0 +1,78 @@
+.contest-workspace {
+    display: grid;
+    grid-template-columns: 250px 1fr 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+  }
+  
+  .problems-sidebar {
+    overflow-y: auto;
+  }
+  
+  .problem-tab {
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .problem-tab:hover {
+    background: rgba(255,255,255,0.6);
+  }
+  
+  .problem-tab.active {
+    background: #3b82f6;
+    color: white;
+  }
+  
+  .problem-statement {
+    overflow-y: auto;
+  }
+  
+  .editor-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .editor-header select,
+  .theme-selector {
+    padding: 0.5rem;
+    border-radius: 2rem;
+    border: 1px solid #ccc;
+    margin-right: 0.5rem;
+  }
+  
+  .submissions-feed {
+    margin-top: 1rem;
+    max-height: 150px;
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+  }
+  
+  .submissions-feed ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .submissions-feed li {
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .verdict-accepted { color: #10b981; }
+  .verdict-wrong-answer { color: #ef4444; }
+  .verdict-runtime-error { color: #f59e0b; }
+  .verdict-time-limit-exceeded { color: #6b7280; }

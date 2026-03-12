@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  name          String
+  email         String    @unique
+  password      String
+  role          String    @default("user") // "user" or "admin"
+  submissions   Submission[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Contest {
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String
+  startTime     DateTime
+  endTime       DateTime
+  problems      Problem[]
+  submissions   Submission[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Problem {
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String
+  testCases     String    // JSON string
+  contestId     Int
+  contest       Contest   @relation(fields: [contestId], references: [id])
+  submissions   Submission[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Submission {
+  id            Int       @id @default(autoincrement())
+  code          String
+  language      String
+  verdict       String    // "Accepted", "Wrong Answer", "Runtime Error", "Time Limit Exceeded"
+  userId        Int
+  user          User      @relation(fields: [userId], references: [id])
+  problemId     Int
+  problem       Problem   @relation(fields: [problemId], references: [id])
+  contestId     Int
+  contest       Contest   @relation(fields: [contestId], references: [id])
+  submittedAt   DateTime  @default(now())
+}
