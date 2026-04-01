@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  username    String       @unique
+  password    String
+  contests    Contest[]    @relation("ContestHost")
+  submissions Submission[]
+  created_at  DateTime     @default(now())
+}
+
+model Contest {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  start_time  DateTime
+  end_time    DateTime
+  host_id     Int
+  host        User         @relation("ContestHost", fields: [host_id], references: [id])
+  problems    Problem[]
+  created_at  DateTime     @default(now())
+}
+
+model Problem {
+  id            Int          @id @default(autoincrement())
+  title         String
+  statement     String
+  time_limit    Float        // In seconds
+  memory_limit  Int          // In megabytes
+  contest_id    Int
+  contest       Contest      @relation(fields: [contest_id], references: [id])
+  test_cases    TestCase[]
+  submissions   Submission[]
+}
+
+model TestCase {
+  id         Int     @id @default(autoincrement())
+  problem_id Int
+  problem    Problem @relation(fields: [problem_id], references: [id])
+  input_url  String  // Path to local file or S3
+  output_url String  // Path to local file or S3
+  is_hidden  Boolean @default(true)
+}
+
+model Submission {
+  id          Int      @id @default(autoincrement())
+  user_id     Int
+  user        User     @relation(fields: [user_id], references: [id])
+  problem_id  Int
+  problem     Problem  @relation(fields: [problem_id], references: [id])
+  code        String
+  language    String   // 'cpp', 'python'
+  status      String   // 'Pending', 'Accepted', 'Wrong Answer', 'Time Limit Exceeded', etc.
+  execution_t Float?   // Execution time in seconds
+  memory_used Int?     // Memory used in KB
+  created_at  DateTime @default(now())
+}
